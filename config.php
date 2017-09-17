@@ -31,7 +31,7 @@ if(!function_exists("wpks_cf7_reporter")){
 	add_action( 'admin_menu', 'wpks_cf7_reporter');
 
 	function wpks_cf7_reporter(){
-	  add_menu_page($page_title = 'Reportes', $menu_title = 'Reportes', $capability = 'administrator', $menu_slug = 'reportes', $function = 'reporte_general', $icon_url = '', $position = 120);
+	  add_menu_page($page_title = 'Reportes', $menu_title = 'Reportes', $capability = 'administrator', $menu_slug = 'reportes', $function = 'reporte_general', $icon_url = 'dashicons-dashboard', $position = 120);
 	}
 
 	function reporte_general(){

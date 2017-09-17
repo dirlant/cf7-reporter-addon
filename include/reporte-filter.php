@@ -62,10 +62,24 @@ table {
       <?php $arreglo = json_decode(json_encode($query),true); ?>
       <?php
         // se extraen las key del arreglo
-        $columns = (array_keys($arreglo[0]));
+
+        $columns = array_keys($arreglo[0]);
+        
       ?>
       <?php for ($i=0; $i < count($columns); $i++): ?>
-      <th class="manage-column"><?php echo $columns[$i] ?></th>
+        <?php                        
+          if (
+            $columns[$i] == '_wpcf7' ||
+            $columns[$i] == '_wpcf7_version' ||
+            $columns[$i] == '_wpcf7_locale' ||
+            $columns[$i] == '_wpcf7_unit_tag' ||
+            $columns[$i] == '_wpcf7_container_post' 
+          ) {}else{
+            echo '<th class="manage-column">'.$columns[$i].'</td>';
+          }
+          
+        ?>
+      <!--<th class="manage-column"><?php echo $columns[$i] ?></th>-->
       <?php endfor; ?>      
     </tr>
   </thead>
@@ -76,7 +90,19 @@ table {
       <tr>
         <td><?php echo $i; ?></td>
         <?php for ($j=0; $j < count($columns); $j++): ?>
-          <td><?php echo $arreglo[$i][$columns[$j]] ?></td>
+          <?php                        
+            if (
+              $columns[$j] == '_wpcf7' ||
+              $columns[$j] == '_wpcf7_version' ||
+              $columns[$j] == '_wpcf7_locale' ||
+              $columns[$j] == '_wpcf7_unit_tag' ||
+              $columns[$j] == '_wpcf7_container_post' 
+            ) {} else{
+              echo '<td>'.$arreglo[$i][$columns[$j]].'</td>';
+            }
+                   
+          ?>
+          <!--<td><?php echo $arreglo[$i][$columns[$j]] ?></td>          -->
         <?php endfor; ?>
       </tr>
     <?php endfor; ?>
